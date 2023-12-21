@@ -77,6 +77,9 @@ def get_user():
 # Identify the current device type. Kill script if not atible.
 def id_system():
     global handycon
+    
+    system_vendor = open("/sys/devices/virtual/dmi/id/sys_vendor", "r").read().strip()
+    handycon.logger.debug(f"Found System ID: {system_vendor}")
 
     system_id = open(
         "/sys/devices/virtual/dmi/id/product_name", "r").read().strip()
