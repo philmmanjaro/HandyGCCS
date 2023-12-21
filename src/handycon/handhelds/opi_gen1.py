@@ -33,7 +33,7 @@ def init_handheld(handheld_controller):
     handycon.CAPTURE_KEYBOARD = True
     handycon.CAPTURE_POWER = True
     handycon.GAMEPAD_ADDRESS = 'usb-0000:c3:00.3-5/input0'
-    handycon.GAMEPAD_NAME = 'Microsoft X-Box 360 pad'
+    handycon.GAMEPAD_NAME = 'SHANWAN Android Gamepad'
     handycon.KEYBOARD_ADDRESS = 'isa0060/serio0/input0'
     handycon.KEYBOARD_NAME = 'AT Translated Set 2 keyboard'
 
