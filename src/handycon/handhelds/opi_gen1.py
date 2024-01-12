@@ -1,25 +1,7 @@
 #!/usr/bin/env python3
 # This file is part of Handheld Game Console Controller System (HandyGCCS)
 # Copyright 2023 Philip Müller <philm@manjaro.org>
-# Copyright 2022-2023 Derek J. Clark <derekjohn.clark@gmail.com>
-
-######### NOTE #########
-# This is a prototype and may change in production
-#
-# There are 4 extra buttons available via AT Translated Set 2 keyboard
-# LC = MSC_SCAN 68
-# RC = MSC_SCAN 69
-# Lower_Left_2 = MSC_SCAN 67
-# Lower_Right_1 = MSC_SCAN 66
-#
-# Other buttons are available via Microsoft X-Box 360 pad from the
-# SHANWAN Android Gamepad
-#
-# Top buttons: LB, LT (trigger), Power, Volume rocker, RB, RT (trigger)
-# Front buttons: D-Pad, X-Y-A-B buttons, Lower_Left_1, Lower_Right_2, 2 Analog Sticks
-#
-########################
-
+# Copyright 2022-2024 Derek J. Clark <derekjohn.clark@gmail.com>
 
 from evdev import InputDevice, InputEvent, UInput, ecodes as e, list_devices, ff
 
@@ -42,22 +24,6 @@ def init_handheld(handheld_controller):
 async def process_event(seed_event, active_keys):
     global handycon
 
-######### Note #########
-# button1 SCR
-# button2 QAM
-# button3 ESC
-# button4 OSK
-# button5 MODE
-# button6 OPEN_CHIMERA
-# button7 TOGGLE_PERFORMANCE
-# button8 MODE
-# button9 TOGGLE_MOUSE
-# button10 ALT_TAB
-# button11 KILL
-# button12 TOGGLE_GYRO
-# power_button SUSPEND
-#########################
-
     # Button map shortcuts for easy reference.
     button1 = handycon.button_map["button1"]  # Default Screenshot
     button2 = handycon.button_map["button2"]  # Default QAM
@@ -72,28 +38,28 @@ async def process_event(seed_event, active_keys):
     if seed_event.code in [e.KEY_VOLUMEDOWN, e.KEY_VOLUMEUP]:
         handycon.emit_event(seed_event)
 
-    # BUTTON 1 (Default: Screenshot/Launch Chiumera) LC Button
-    if active_keys == [] and button_on == 1 and button1 not in handycon.event_queue:
+    # BUTTON 1 (Default: Screenshot) LC Button
+    if active_keys == [187] and button_on == 1 and button1 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button1)
-    elif active_keys == [] and seed_event.code in [] and button_on == 0 and button1 in handycon.event_queue:
+    elif active_keys == [] and seed_event.code in [187] and button_on == 0 and button1 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button1)
 
-    # BUTTON 2 (Default: QAM) Lower_Right_1
-    if active_keys == [] and button_on == 1 and button2 not in handycon.event_queue:
+    # BUTTON 2 (Default: QAM) Lower Right Inboard
+    if active_keys == [185] and button_on == 1 and button2 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button2)
-    elif active_keys == [] and seed_event.code in [] and button_on == 0 and button2 in handycon.event_queue:
+    elif active_keys == [] and seed_event.code in [185] and button_on == 0 and button2 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button2)
 
     # BUTTON 4 (Default: OSK) RC Button
-    if active_keys == [] and button_on == 1 and button4 not in handycon.event_queue:
+    if active_keys == [188] and button_on == 1 and button4 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button4)
-    elif active_keys == [] and seed_event.code in [] and button_on == 0 and button4 in handycon.event_queue:
+    elif active_keys == [] and seed_event.code in [188] and button_on == 0 and button4 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button4)
 
-    # BUTTON 5 (Default: MODE) Lower_Left_2
-    if active_keys == [] and button_on == 1 and button5 not in handycon.event_queue:
+    # BUTTON 5 (Default: MODE) Lower Left Inboard
+    if active_keys == [186] and button_on == 1 and button5 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button5)
-    elif active_keys == [] and seed_event.code in [] and button_on == 0 and button5 in handycon.event_queue:
+    elif active_keys == [] and seed_event.code in [186] and button_on == 0 and button5 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button5)
 
     # Handle L_META from power button
