@@ -44,7 +44,7 @@ async def process_event(seed_event, active_keys):
     elif active_keys == [] and seed_event.code in [187] and button_on == 0 and button1 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button1)
 
-    # BUTTON 2 (Default: QAM) Lower Right Inboard
+    # BUTTON 2 (Default: QAM) Lower Right Inboard (Button 6)
     if active_keys == [185] and button_on == 1 and button2 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button2)
     elif active_keys == [] and seed_event.code in [185] and button_on == 0 and button2 in handycon.event_queue:
@@ -56,7 +56,7 @@ async def process_event(seed_event, active_keys):
     elif active_keys == [] and seed_event.code in [188] and button_on == 0 and button4 in handycon.event_queue:
         await handycon.handle_key_up(seed_event, button4)
 
-    # BUTTON 5 (Default: MODE) Lower Left Inboard
+    # BUTTON 5 (Default: MODE) Lower Left Inboard (Button 5)
     if active_keys == [186] and button_on == 1 and button5 not in handycon.event_queue:
         await handycon.handle_key_down(seed_event, button5)
     elif active_keys == [] and seed_event.code in [186] and button_on == 0 and button5 in handycon.event_queue:
