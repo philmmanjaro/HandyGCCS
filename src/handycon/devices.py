@@ -401,6 +401,7 @@ async def capture_controller_events():
                         continue
 
                     # Output the event.
+                    handycon.logger.debug(f'Passing controller event: {event}')
                     emit_event(event)
             except Exception as err:
                 handycon.logger.error(
