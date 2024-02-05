@@ -30,6 +30,7 @@ import handycon.handhelds.gpd_gen1 as gpd_gen1
 import handycon.handhelds.gpd_gen2 as gpd_gen2
 import handycon.handhelds.gpd_gen3 as gpd_gen3
 import handycon.handhelds.gpd_gen4 as gpd_gen4
+import handycon.handhelds.opi_gen1 as opi_gen1
 import handycon.handhelds.oxp_gen1 as oxp_gen1
 import handycon.handhelds.oxp_gen2 as oxp_gen2
 import handycon.handhelds.oxp_gen3 as oxp_gen3
@@ -312,6 +313,8 @@ async def capture_keyboard_events():
                             await gpd_gen3.process_event(seed_event, active_keys)
                         case "GPD_GEN4":
                             await gpd_gen4.process_event(seed_event, active_keys)
+                        case "OPI_GEN1":
+                            await opi_gen1.process_event(seed_event, active_keys)
                         case "OXP_GEN1":
                             await oxp_gen1.process_event(seed_event, active_keys)
                         case "OXP_GEN2":
