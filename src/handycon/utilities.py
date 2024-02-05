@@ -32,6 +32,7 @@ import handycon.handhelds.go_gen1 as go_gen1
 import handycon.handhelds.gpd_gen1 as gpd_gen1
 import handycon.handhelds.gpd_gen2 as gpd_gen2
 import handycon.handhelds.gpd_gen3 as gpd_gen3
+import handycon.handhelds.opi_gen1 as opi_gen1
 import handycon.handhelds.gpd_gen4 as gpd_gen4
 import handycon.handhelds.oxp_gen1 as oxp_gen1
 import handycon.handhelds.oxp_gen2 as oxp_gen2
@@ -307,6 +308,14 @@ def id_system():
     ):
         handycon.system_type = "OXP_GEN7"
         oxp_gen7.init_handheld(handycon)
+
+    ## OrangePi Devices
+    # Note: this is a prototype, so values may change in production
+    elif system_vendor == "OrangePi" and system_id in (
+        "G1621-02", #Neo
+        ):
+        handycon.system_type = "OPI_GEN1"
+        opi_gen1.init_handheld(handycon)
 
     # Devices that aren't supported could cause issues, exit.
     else:
