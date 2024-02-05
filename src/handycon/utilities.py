@@ -312,7 +312,8 @@ def id_system():
     ## OrangePi Devices
     # Note: this is a prototype, so values may change in production
     elif system_vendor == "OrangePi" and system_id in (
-        "G1621-02", #Neo
+        "G1621-02", #OrangePi G1621-02/G1621-02, BIOS 1.04 11/13/2023, BIOS 1.04 01/17/2024, Fosdem 2024 Prototype A
+        "NEO-01",   #OrangePi NEO-01/NEO-01, Fosdem 2024 Prototype B
         ):
         handycon.system_type = "OPI_GEN1"
         opi_gen1.init_handheld(handycon)
