@@ -403,7 +403,7 @@ async def capture_controller_events():
                         if event.code == e.ABS_Z:
                             event.code = e.ABS_RX
                         elif event.code == e.ABS_RZ:
-                            event.cide = e.ABS_RY
+                            event.code = e.ABS_RY
                         elif event.code == e.ABS_BRAKE:
                             event.code = e.ABS_Z
                         elif event.code == e.ABS_GAS:
