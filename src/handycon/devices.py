@@ -399,6 +399,8 @@ async def capture_controller_events():
                     # Block FF events, or get infinite recursion. Up to you I guess...
                     if event.type in [e.EV_FF, e.EV_UINPUT]:
                         continue
+                    if event.type == e.EV_ABS and event.code in [e.ABS_X, e.ABS_Y]:
+                        event.value = event.value * 256
 
                     # Output the event.
                     handycon.logger.debug(f'Passing controller event: {event}')
