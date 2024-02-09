@@ -409,7 +409,7 @@ async def capture_controller_events():
                         elif event.code == e.ABS_GAS:
                             event.code = e.ABS_RZ
                         if event.code in [e.ABS_X, e.ABS_Y, e.ABS_RX, e.ABS_RY]: 
-                            event.value = event.value * 512 - 32767
+                            event.value = event.value * 256 - 32767
 
                     # Output the event.
                     handycon.logger.debug(f'Passing controller event: {event}')
