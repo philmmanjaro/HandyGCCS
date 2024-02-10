@@ -399,7 +399,8 @@ async def capture_controller_events():
                     # Block FF events, or get infinite recursion. Up to you I guess...
                     if event.type in [e.EV_FF, e.EV_UINPUT]:
                         continue
-                    if event.type == e.EV_ABS:
+                    # OPI-NEO-01 FOSDEM Prototype need fixes for Joysticks
+                    if event.type == e.EV_ABS and handycon.system_type == "OPI_GEN1":
                         if event.code == e.ABS_Z:
                             event.code = e.ABS_RX
                         elif event.code == e.ABS_RZ:
