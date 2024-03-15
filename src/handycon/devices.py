@@ -373,6 +373,8 @@ async def capture_keyboard_2_events():
                     match handycon.system_type:
                         case "ALY_GEN1":
                             await ally_gen1.process_event(seed_event_2, active_keys_2)
+                        case "OPI_GEN1":
+                            await opi_gen1.process_event(seed_event_2, active_keys_2)
 
             except Exception as err:
                 handycon.logger.error(
