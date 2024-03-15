@@ -399,18 +399,6 @@ async def capture_controller_events():
                     # Block FF events, or get infinite recursion. Up to you I guess...
                     if event.type in [e.EV_FF, e.EV_UINPUT]:
                         continue
-                    # OPI-NEO-01 FOSDEM Prototype need fixes for Joysticks
-                    if event.type == e.EV_ABS and handycon.system_type == "OPI_GEN1":
-                        if event.code == e.ABS_Z:
-                            event.code = e.ABS_RX
-                        elif event.code == e.ABS_RZ:
-                            event.code = e.ABS_RY
-                        elif event.code == e.ABS_BRAKE:
-                            event.code = e.ABS_Z
-                        elif event.code == e.ABS_GAS:
-                            event.code = e.ABS_RZ
-                        if event.code in [e.ABS_X, e.ABS_Y, e.ABS_RX, e.ABS_RY]: 
-                            event.value = event.value * 256 - 32767
 
                     # Output the event.
                     handycon.logger.debug(f'Passing controller event: {event}')
