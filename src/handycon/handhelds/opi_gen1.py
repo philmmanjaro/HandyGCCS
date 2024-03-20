@@ -18,7 +18,7 @@ def init_handheld(handheld_controller):
     handycon.GAMEPAD_NAME = 'Microsoft X-Box 360 pad'
     handycon.KEYBOARD_ADDRESS = 'isa0060/serio0/input0'
     handycon.KEYBOARD_NAME = 'AT Translated Set 2 keyboard'
-    handycon.KEYBOARD_2_NAME = '  USB Controller'
+    handycon.KEYBOARD_2_NAME = '  OrangePi USB Controller'
     handycon.KEYBOARD_2_ADDRESS = 'usb-0000:c3:00.3-5/input1'
 
 
